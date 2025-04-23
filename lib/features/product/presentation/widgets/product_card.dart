@@ -41,18 +41,41 @@ class ProductCard extends StatelessWidget {
                 ),
                 Positioned(
                   top: 8,
+                  left: 8,
+                  child: product.stock == 0
+                      ? Container(
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 4,
+                          ),
+                          child: Text(
+                            "Out of Stock",
+                            style:
+                                Theme.of(context).textTheme.bodySmall?.copyWith(
+                                      color: AppColor.white,
+                                    ),
+                          ),
+                        )
+                      : SizedBox.shrink(),
+                ),
+                Positioned(
+                  top: 8,
                   right: 8,
                   child: Container(
-                      decoration: BoxDecoration(
-                        color: AppColor.white,
-                        borderRadius: BorderRadius.circular(32),
-                      ),
-                      padding: const EdgeInsets.all(6),
-                      child: Icon(
-                        Icons.favorite,
-                        color: AppColor.orange,
-                        size: 16,
-                      ),
+                    decoration: BoxDecoration(
+                      color: AppColor.white,
+                      borderRadius: BorderRadius.circular(32),
+                    ),
+                    padding: const EdgeInsets.all(6),
+                    child: Icon(
+                      Icons.favorite,
+                      color: AppColor.orange,
+                      size: 16,
+                    ),
                   ),
                 ),
               ],
