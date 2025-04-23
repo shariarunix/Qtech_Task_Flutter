@@ -67,9 +67,9 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   }
 
   void _onFavouriteChanged(OnFavourite event, Emitter<ProductState> emit){
+    final products = [...state.products];
     final favourite = state.products[event.index];
-    final products = [...state.products]..remove(favourite);
-    products.insert(event.index, favourite.copyWith(isFavourite: !favourite.isFavourite));
+    products[event.index] = favourite.copyWith(isFavourite: !favourite.isFavourite);
     emit(state.copyWith(products: products));
   }
 }
