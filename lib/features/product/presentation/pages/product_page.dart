@@ -44,7 +44,7 @@ class _ProductPageState extends State<ProductPage> {
     required VoidCallback onSortByPriceAsc,
     required VoidCallback onSortByPriceDesc,
     required VoidCallback onSortByRating,
-}) {
+  }) {
     showModalBottomSheet(
       context: context,
       backgroundColor: AppColor.white,
@@ -185,11 +185,9 @@ class _ProductPageState extends State<ProductPage> {
               onNotification: (scrollInfo) {
                 if (scrollInfo.metrics.pixels ==
                     scrollInfo.metrics.maxScrollExtent) {
-                  context
-                      .read<ProductBloc>()
-                      .add(
-                    const ProductEvent.fetchMore(),
-                  );
+                  context.read<ProductBloc>().add(
+                        const ProductEvent.fetchMore(),
+                      );
                 }
                 return true;
               },
@@ -206,6 +204,11 @@ class _ProductPageState extends State<ProductPage> {
                     product: state.isSearching
                         ? state.searchedProduct[index]
                         : state.products[index],
+                    onFavourite: () {
+                      context.read<ProductBloc>().add(
+                            ProductEvent.onFavourite(index),
+                          );
+                    },
                   );
                 },
               ),

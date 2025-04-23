@@ -4,8 +4,13 @@ import 'package:qtech_task_flutter/features/product/domain/entities/product/prod
 
 class ProductCard extends StatelessWidget {
   final Product product;
+  final VoidCallback onFavourite;
 
-  const ProductCard({super.key, required this.product});
+  const ProductCard({
+    super.key,
+    required this.product,
+    required this.onFavourite,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -65,16 +70,23 @@ class ProductCard extends StatelessWidget {
                 Positioned(
                   top: 8,
                   right: 8,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: AppColor.white,
-                      borderRadius: BorderRadius.circular(32),
-                    ),
-                    padding: const EdgeInsets.all(6),
-                    child: Icon(
-                      Icons.favorite,
-                      color: AppColor.orange,
-                      size: 16,
+                  child: GestureDetector(
+                    onTap: () {
+                      onFavourite();
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: AppColor.white,
+                        borderRadius: BorderRadius.circular(32),
+                      ),
+                      padding: const EdgeInsets.all(6),
+                      child: Icon(
+                        product.isFavourite
+                            ? Icons.favorite
+                            : Icons.favorite_border,
+                        color: AppColor.orange,
+                        size: 16,
+                      ),
                     ),
                   ),
                 ),

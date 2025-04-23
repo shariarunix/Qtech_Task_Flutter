@@ -9,4 +9,5 @@ class ProductEvent with _$ProductEvent {
   const factory ProductEvent.search(String query) = Search;
   const factory ProductEvent.sortByPrice(bool isAscending) = SortByPrice;
   const factory ProductEvent.sortByRating() = SortByRating;
+  const factory ProductEvent.onFavourite(int index) = OnFavourite;
 }

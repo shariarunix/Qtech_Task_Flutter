@@ -13,6 +13,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     on<Search>(_onSearch);
     on<SortByPrice>(_onSortByPrice);
     on<SortByRating>(_onSortByRating);
+    on<OnFavourite>(_onFavouriteChanged);
   }
 
   Future<void> _onFetchInitial(
@@ -63,5 +64,12 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     final sorted = [...state.products]
       ..sort((a, b) => b.rating.compareTo(a.rating));
     emit(state.copyWith(products: sorted));
+  }
+
+  void _onFavouriteChanged(OnFavourite event, Emitter<ProductState> emit){
+    final favourite = state.products[event.index];
+    final products = [...state.products]..remove(favourite);
+    products.insert(event.index, favourite.copyWith(isFavourite: !favourite.isFavourite));
+    emit(state.copyWith(products: products));
   }
 }

@@ -221,4 +221,67 @@ class SortByRating implements ProductEvent {
   }
 }
 
+/// @nodoc
+
+class OnFavourite implements ProductEvent {
+  const OnFavourite(this.index);
+
+  final int index;
+
+  /// Create a copy of ProductEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $OnFavouriteCopyWith<OnFavourite> get copyWith =>
+      _$OnFavouriteCopyWithImpl<OnFavourite>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is OnFavourite &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index);
+
+  @override
+  String toString() {
+    return 'ProductEvent.onFavourite(index: $index)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $OnFavouriteCopyWith<$Res>
+    implements $ProductEventCopyWith<$Res> {
+  factory $OnFavouriteCopyWith(
+          OnFavourite value, $Res Function(OnFavourite) _then) =
+      _$OnFavouriteCopyWithImpl;
+  @useResult
+  $Res call({int index});
+}
+
+/// @nodoc
+class _$OnFavouriteCopyWithImpl<$Res> implements $OnFavouriteCopyWith<$Res> {
+  _$OnFavouriteCopyWithImpl(this._self, this._then);
+
+  final OnFavourite _self;
+  final $Res Function(OnFavourite) _then;
+
+  /// Create a copy of ProductEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(OnFavourite(
+      null == index
+          ? _self.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
 // dart format on

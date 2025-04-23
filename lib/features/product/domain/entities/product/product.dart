@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'product.freezed.dart';
 
 @freezed
-abstract class Product with _$Product{
+abstract class Product with _$Product {
   const factory Product({
     required int id,
     required String title,
@@ -16,5 +16,6 @@ abstract class Product with _$Product{
     required String availabilityStatus,
     required int reviews,
     required String thumbnail,
+    @Default(false) bool isFavourite,
   }) = _Prodcut;
 }

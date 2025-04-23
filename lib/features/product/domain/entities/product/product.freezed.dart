@@ -26,6 +26,7 @@ mixin _$Product {
   String get availabilityStatus;
   int get reviews;
   String get thumbnail;
+  bool get isFavourite;
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
@@ -54,7 +55,9 @@ mixin _$Product {
                 other.availabilityStatus == availabilityStatus) &&
             (identical(other.reviews, reviews) || other.reviews == reviews) &&
             (identical(other.thumbnail, thumbnail) ||
-                other.thumbnail == thumbnail));
+                other.thumbnail == thumbnail) &&
+            (identical(other.isFavourite, isFavourite) ||
+                other.isFavourite == isFavourite));
   }
 
   @override
@@ -70,11 +73,12 @@ mixin _$Product {
       stock,
       availabilityStatus,
       reviews,
-      thumbnail);
+      thumbnail,
+      isFavourite);
 
   @override
   String toString() {
-    return 'Product(id: $id, title: $title, description: $description, price: $price, discountPercentage: $discountPercentage, priceAfterDiscount: $priceAfterDiscount, rating: $rating, stock: $stock, availabilityStatus: $availabilityStatus, reviews: $reviews, thumbnail: $thumbnail)';
+    return 'Product(id: $id, title: $title, description: $description, price: $price, discountPercentage: $discountPercentage, priceAfterDiscount: $priceAfterDiscount, rating: $rating, stock: $stock, availabilityStatus: $availabilityStatus, reviews: $reviews, thumbnail: $thumbnail, isFavourite: $isFavourite)';
   }
 }
 
@@ -94,7 +98,8 @@ abstract mixin class $ProductCopyWith<$Res> {
       int stock,
       String availabilityStatus,
       int reviews,
-      String thumbnail});
+      String thumbnail,
+      bool isFavourite});
 }
 
 /// @nodoc
@@ -120,6 +125,7 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
     Object? availabilityStatus = null,
     Object? reviews = null,
     Object? thumbnail = null,
+    Object? isFavourite = null,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -166,6 +172,10 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
           ? _self.thumbnail
           : thumbnail // ignore: cast_nullable_to_non_nullable
               as String,
+      isFavourite: null == isFavourite
+          ? _self.isFavourite
+          : isFavourite // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -184,7 +194,8 @@ class _Prodcut implements Product {
       required this.stock,
       required this.availabilityStatus,
       required this.reviews,
-      required this.thumbnail});
+      required this.thumbnail,
+      this.isFavourite = false});
 
   @override
   final int id;
@@ -208,6 +219,9 @@ class _Prodcut implements Product {
   final int reviews;
   @override
   final String thumbnail;
+  @override
+  @JsonKey()
+  final bool isFavourite;
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
@@ -237,7 +251,9 @@ class _Prodcut implements Product {
                 other.availabilityStatus == availabilityStatus) &&
             (identical(other.reviews, reviews) || other.reviews == reviews) &&
             (identical(other.thumbnail, thumbnail) ||
-                other.thumbnail == thumbnail));
+                other.thumbnail == thumbnail) &&
+            (identical(other.isFavourite, isFavourite) ||
+                other.isFavourite == isFavourite));
   }
 
   @override
@@ -253,11 +269,12 @@ class _Prodcut implements Product {
       stock,
       availabilityStatus,
       reviews,
-      thumbnail);
+      thumbnail,
+      isFavourite);
 
   @override
   String toString() {
-    return 'Product(id: $id, title: $title, description: $description, price: $price, discountPercentage: $discountPercentage, priceAfterDiscount: $priceAfterDiscount, rating: $rating, stock: $stock, availabilityStatus: $availabilityStatus, reviews: $reviews, thumbnail: $thumbnail)';
+    return 'Product(id: $id, title: $title, description: $description, price: $price, discountPercentage: $discountPercentage, priceAfterDiscount: $priceAfterDiscount, rating: $rating, stock: $stock, availabilityStatus: $availabilityStatus, reviews: $reviews, thumbnail: $thumbnail, isFavourite: $isFavourite)';
   }
 }
 
@@ -278,7 +295,8 @@ abstract mixin class _$ProdcutCopyWith<$Res> implements $ProductCopyWith<$Res> {
       int stock,
       String availabilityStatus,
       int reviews,
-      String thumbnail});
+      String thumbnail,
+      bool isFavourite});
 }
 
 /// @nodoc
@@ -304,6 +322,7 @@ class __$ProdcutCopyWithImpl<$Res> implements _$ProdcutCopyWith<$Res> {
     Object? availabilityStatus = null,
     Object? reviews = null,
     Object? thumbnail = null,
+    Object? isFavourite = null,
   }) {
     return _then(_Prodcut(
       id: null == id
@@ -350,6 +369,10 @@ class __$ProdcutCopyWithImpl<$Res> implements _$ProdcutCopyWith<$Res> {
           ? _self.thumbnail
           : thumbnail // ignore: cast_nullable_to_non_nullable
               as String,
+      isFavourite: null == isFavourite
+          ? _self.isFavourite
+          : isFavourite // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
